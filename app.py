@@ -15,14 +15,12 @@ def home():
 @app.route("/run")
 def run():
     try:
-        # Fetch data
         data = requests.get("https://mun-dat.onrender.com/registrations")
         df = pd.DataFrame(data.json())
 
         if "_id" in df.columns:
             df = df.drop(columns=["_id"])
 
-        # Absolute path to credentials file
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         creds_path = os.path.join(BASE_DIR, "something.json")
 
@@ -40,7 +38,7 @@ def run():
 
         set_with_dataframe(sheet, df)
 
-        return "Success"
+        return "<a href='https://docs.google.com/spreadsheets/d/1jOBWzZ54qjeUrcsDbVlm7tTx1MBqEfhm6ZNREy6rlVE/edit?gid=0#gid=0'>Link to Google Sheets</a>"
 
     except Exception as e:
         return f"Error: {str(e)}"

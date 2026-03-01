@@ -1,0 +1,6 @@
+requests
+flask
+gspread
+oauth2client
+gspread_dataframe
+gunicorn
